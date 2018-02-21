@@ -25,7 +25,7 @@ export default class ChatRoom extends Component {
 
     return (
       <div>
-        <h1>Chatroom</h1>
+        <h1>{this.props.chatroom}</h1>
         <ul>
           {messages}
         </ul>

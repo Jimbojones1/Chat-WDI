@@ -12,25 +12,32 @@ export default class ChatBoard extends Component {
 
     this.state = {
       usernames: [],
-      messages: []
+      messages: [],
+      rooms: [],
+      chatroom: 'Main Room'
     }
   }
   componentDidMount(){
     // set up the listener for the users,
-    socket.on('users', (usernames) => {
-      this.setState({usernames: [...usernames]})
-    })
+    socket.on('users', (usernames, roomname) => {
+      this.setState({usernames: [...usernames], chatroom: roomname})
+    });
 
     socket.on('messages', (messages) => {
       this.setState({messages: [...messages]})
-    })
+    });
+
+    socket.on('rooms', (rooms) => {
+        this.setState({rooms: [...rooms]})
+    });
+
   }
   render(){
     return (
       <div className="wrapper">
         <Users usernames={this.state.usernames}/>
-        <Rooms />
-        <ChatRoom messages={this.state.messages}/>
+        <Rooms rooms={this.state.rooms}/>
+        <ChatRoom messages={this.state.messages} chatroom={this.state.chatroom}/>
       </div>
       )
   }
