@@ -3,7 +3,7 @@ import {socket} from '../index'
 import './style.css';
 import Rooms from '../Rooms';
 import Users from '../Users';
-import ChatRoom from '../ChatRoom'
+import ChatRoom from '../ChatRoom';
 
 // Smart Component
 export default class ChatBoard extends Component {
@@ -20,15 +20,15 @@ export default class ChatBoard extends Component {
   componentDidMount(){
     // set up the listener for the users,
     socket.on('users', (usernames, roomname) => {
-      this.setState({usernames: [...usernames], chatroom: roomname})
+      this.setState({usernames: [...usernames], chatroom: roomname});
     });
 
     socket.on('messages', (messages) => {
-      this.setState({messages: [...messages]})
+      this.setState({messages: [...messages]});
     });
 
     socket.on('rooms', (rooms) => {
-        this.setState({rooms: [...rooms]})
+        this.setState({rooms: [...rooms]});
     });
 
   }
