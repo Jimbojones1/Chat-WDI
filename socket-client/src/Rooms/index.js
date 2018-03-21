@@ -5,7 +5,7 @@ import './style.css';
 export default class Rooms extends Component {
   handleRoomChange = (e) => {
       // we want to send to the express server the name of our room
-      console.log(e.currentTarget.value, e.currentTarget.innerText)
+      console.log(e.currentTarget.value, e.currentTarget.innerText);
       socket.emit('change room', e.currentTarget.innerText);
 
   }
@@ -13,7 +13,7 @@ export default class Rooms extends Component {
 
     const rooms = this.props.rooms.map((room, i) => {
       return <li key={i} onClick={this.handleRoomChange}>{room.name}</li>
-    })
+    });
 
 
     return (
