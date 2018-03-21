@@ -1,11 +1,10 @@
-import React, {Component} from 'react';
-import {socket} from '../index';
+import React from 'react';
 import './style.css';
 
-export default class Users extends Component {
-  render(){
+const Users = ({usernames}) => {
 
-    const usernames = this.props.usernames.map((username, i) => {
+
+    const users = usernames.map((username, i) => {
       return <li key={i}>{username}</li>
     });
 
@@ -13,9 +12,10 @@ export default class Users extends Component {
       <div>
         <h1>Users</h1>
         <ul>
-          {usernames}
+          {users}
         </ul>
       </div>
       )
-  }
-}
+};
+
+export default Users;
