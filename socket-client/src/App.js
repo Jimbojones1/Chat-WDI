@@ -14,7 +14,7 @@ class App extends Component {
     }
   }
   addUser = (user) => {
-    this.setState({username: user, loggedIn: !this.state.loggedIn})
+    this.setState({username: user, loggedIn: !this.state.loggedIn});
   }
   render() {
     return (
