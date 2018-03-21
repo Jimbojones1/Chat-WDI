@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {socket} from '../index'
+import {socket} from '../index';
 import './style.css';
 
 export default class Rooms extends Component {
