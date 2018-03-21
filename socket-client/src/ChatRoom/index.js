@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {socket} from '../index'
 import './style.css';
+import PropTypes from 'prop-types';
 
-export default class ChatRoom extends Component {
+class ChatRoom extends Component {
   constructor(){
     super();
     this.state = {
@@ -35,4 +36,14 @@ export default class ChatRoom extends Component {
       </div>
       )
   }
-}
+};
+
+
+ChatRoom.propTypes = {
+  chatroom: PropTypes.string,
+  messages: PropTypes.array
+};
+
+
+
+export default ChatRoom;

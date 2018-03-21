@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.css';
+import PropTypes from 'prop-types';
 
 const Users = ({usernames}) => {
 
@@ -16,6 +17,10 @@ const Users = ({usernames}) => {
         </ul>
       </div>
       )
+};
+
+Users.propTypes = {
+  usernames: PropTypes.array
 };
 
 export default Users;

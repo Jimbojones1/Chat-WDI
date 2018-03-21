@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {socket} from '../index';
 import './style.css';
+import PropTypes from 'prop-types';
 
-export default class Rooms extends Component {
+class Rooms extends Component {
   handleRoomChange = (e) => {
       // we want to send to the express server the name of our room
       console.log(e.currentTarget.value, e.currentTarget.innerText);
@@ -25,4 +26,10 @@ export default class Rooms extends Component {
       </div>
       )
   }
-}
+};
+
+Rooms.propTypes = {
+  rooms: PropTypes.array
+};
+
+export default Rooms;
