@@ -43,7 +43,7 @@ module.exports = function(server){
       // it all the usernames in the object, HINT: ALL THE KEYS
       socketServer.to('Main Room').emit('users', rooms[0].users, 'Main Room');
       // socketServer.emit('messages', messages);
-    })// end of addUser
+    });// end of addUser
 
     socket.on('message', (message) => {
       const obj = {};
@@ -52,7 +52,7 @@ module.exports = function(server){
       messages.push(obj);
       socketServer.emit('messages', messages);
 
-    })
+    });
 
     socket.on('change room', (room) => {
       // socket
@@ -88,7 +88,7 @@ module.exports = function(server){
       // emit a message with the current Room name of
 
 
-    })
+    });
 
 
 
@@ -98,12 +98,12 @@ module.exports = function(server){
           // the update the users list by firing an event to the react application
           // to update the current users
           socketServer.emit('users', Object.keys(usernames));
-    })
+    });
 
 
 
 
 
 
-  })/// end of connection
-}// end of the function
+  });/// end of connection
+};// end of the function
