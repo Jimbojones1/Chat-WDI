@@ -10,7 +10,7 @@ export default class Login extends Component {
     }
   }
   handleNameChange = (e) => {
-    this.setState({username: e.currentTarget.value})
+    this.setState({username: e.currentTarget.value});
   }
   handleSubmit = (e) =>{
     e.preventDefault();
