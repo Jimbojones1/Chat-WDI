@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {socket} from '../index'
+import {socket} from '../index';
 import './style.css';
 
 export default class Users extends Component {
@@ -7,7 +7,7 @@ export default class Users extends Component {
 
     const usernames = this.props.usernames.map((username, i) => {
       return <li key={i}>{username}</li>
-    })
+    });
 
     return (
       <div>
