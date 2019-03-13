@@ -5,7 +5,7 @@ const messages = [];
 
 
 const rooms = [{
-                name: 'Main Room',
+                name: 'MainRoom',
                 messages: [],
                 users: []
               },
@@ -62,12 +62,15 @@ module.exports = function(server){
     socket.on('change room', (room) => {
       // socket
       console.log('=------------------------------')
-      console.log(socket, ' in change room')
-      socket.leave(socket.room);
+      console.log(socket.room, ' in change room')
+
 
       const previousRoom = rooms.find((element) => {
+        console.log(socket.room, element.name, ' login previouseroom')
         return element.name === socket.room
       });
+      socket.leave(socket.room);
+      console.log(previousRoom)
 
      const indexOfUser = previousRoom.users.indexOf(socket.username);
      previousRoom.users.splice(indexOfUser, 1);

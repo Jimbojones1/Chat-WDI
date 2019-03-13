@@ -10,7 +10,7 @@ function ChatRoom({messages, chatroom}){
   const messageDisplay = messages.map((message, i) => {
     return <li key={i}>{message.username}: {message.message} </li>
   });
-  console.log(messageValue, chatroom)
+
   return (
       <div>
         <h1>{chatroom}</h1>
