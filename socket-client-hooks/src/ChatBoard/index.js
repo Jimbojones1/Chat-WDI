@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {socket} from '../index'
-import './style.css';
+import {socket} from '../App';
+// import './style.css';
 // import Rooms from '../Rooms';
 // import Users from '../Users';
 // import ChatRoom from '../ChatRoom';

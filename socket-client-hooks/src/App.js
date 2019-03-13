@@ -14,17 +14,17 @@ const App = () => {
 
   useEffect(() => {
 
-    socket.emit('something', 'taco')
-    console.log(socket, ' this is sockete')
     socket.on('receive message', (data) => {
       console.log(data)
       console.log('hitting')
     })
   });
 
-  return (
-     <ChatBoard />
-    )
+
+  const component = isLogged ?  <ChatBoard /> :  <Login setUsername={username => setUsername(username)} setLogged={logged => setLogged(logged)}/>
+  console.log(component, isLogged)
+  return component
 }
+
 
 export default App;

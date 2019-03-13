@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {socket} from '../index.js';
+import {socket} from '../App';
 
-export default function Login(){
+export default function Login({setUsername, setLogged}){
 
     const useInputValue = (initialState) => {
       const [value, setVal] = useState(initialState);
@@ -17,12 +17,14 @@ export default function Login(){
 
 
     return (
-      <form onSubmit={() => {
-        socket.emit('addUser', username);
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        socket.emit('addUser', username.value);
+        setUsername(username);
+        setLogged(true);
       }}>
         <input type="text" placeholder="username" {...username}/>
         <button>Login</button>
       </form>
       )
-  }
 };
