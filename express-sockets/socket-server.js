@@ -1,5 +1,5 @@
 const io = require('socket.io');
-const { addUser, handleChatMessage, handleRoomChange } = require('./socketListeners');
+const { addUser, handleChatMessage, handleRoomChange, disconnect } = require('./socketListeners');
 
 module.exports = function(server){
   const socketServer = io(server);
@@ -11,7 +11,7 @@ module.exports = function(server){
     socket.on('addUser', (username) => addUser(username, socket, socketServer))
     socket.on('message', (message) => handleChatMessage(message, socket, socketServer));
     socket.on('change room', (room) => handleRoomChange(room, socket, socketServer));
-
+    socket.on('disconnect', () => disconnect(socket, socketServer))
 
 
     // socket.on('disconnect', () => {

@@ -70,10 +70,18 @@ module.exports = {
       });
 
       nextRoom.users.push(socket.username);
+      console.log(nextRoom)
       io.to(nextRoom.name).emit('users', nextRoom.users, nextRoom.name)
       //remove the user from room array,
       // add them to the new room array
 
       // emit a message with the current Room name of
+  },
+  disconnect: function(socket, io){
+     delete usernames[socket.username]
+    //       // the update the users list by firing an event to the react application
+    //       // to update the current users
+    io.emit('users', Object.keys(usernames));
+
   }
 }
