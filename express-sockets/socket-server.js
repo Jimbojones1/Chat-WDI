@@ -26,8 +26,14 @@ module.exports = function(server){
 
   socketServer.on('connection', socket => {
     console.log('socket is connected')
+    socket.on('something', (data) => {
+      console.log(data);
+
+    })
+    socketServer.emit('receive message', 'connected');
 
     socket.on('addUser', (username) => {
+      console.log('hitting', username)
       //store thier name as the key and the socket.id as the value
       usernames[username] = socket.id;
       socket.username = username;
