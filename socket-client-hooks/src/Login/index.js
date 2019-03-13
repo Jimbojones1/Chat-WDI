@@ -19,9 +19,12 @@ export default function Login({setUsername, setLogged}){
     return (
       <form onSubmit={(e) => {
         e.preventDefault();
-        socket.emit('addUser', username.value);
-        setUsername(username);
+        console.log(setLogged)
         setLogged(true);
+        setUsername(username);
+        socket.emit('addUser', username.value);
+
+
       }}>
         <input type="text" placeholder="username" {...username}/>
         <button>Login</button>

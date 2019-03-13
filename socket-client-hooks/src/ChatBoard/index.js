@@ -16,27 +16,38 @@ export default function ChatBoard(){
 
 
   useEffect(() => {
-
+    console.log('something happening', socket)
     socket.on('users', (usernames, roomname) => {
+      console.log(usernames, roomname, 'users')
       setUsernames(usernames);
       setChatRoomName(roomname);
 
     });
 
     socket.on('messages', (messages) => {
+      console.log(messages, 'messages')
       setMessages(messages)
     });
 
     socket.on('rooms', (rooms) => {
+        console.log(rooms, 'rooms');
         setRooms(rooms);
     });
-  })
+
+  }, [usernames, setChatRoomName, rooms, messages]);
+
+
+  // useEffect()
+  //     socket.on('rooms', (rooms) => {
+  //       console.log(rooms, 'rooms');
+  //       setRooms(rooms);
+  //   });
 
 
 
   return (
       <div className="wrapper">
-       hi
+       chatboard
       </div>
       )
 
