@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {socket} from '../App';
 import './style.css';
-// import Rooms from '../Rooms';
+import Rooms from '../Rooms';
 import Users from '../Users';
 import ChatRoom from '../ChatRoom';
 
@@ -37,17 +37,10 @@ export default function ChatBoard(){
   }, [usernames, setChatRoomName, rooms, messages]);
 
 
-  // useEffect()
-  //     socket.on('rooms', (rooms) => {
-  //       console.log(rooms, 'rooms');
-  //       setRooms(rooms);
-  //   });
-
-
-
   return (
       <div className="wrapper">
        <Users usernames={usernames}/>
+       <Rooms rooms={rooms}/>
        <ChatRoom messages={messages} chatroom={chatRoomName}/>
       </div>
       )

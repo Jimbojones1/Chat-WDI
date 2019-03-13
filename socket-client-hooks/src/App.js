@@ -20,10 +20,6 @@ const App = () => {
     })
   });
 
-
-  // const component = isLogged ?  <ChatBoard /> :  <Login setUsername={username => setUsername(username)} setLogged={logged => setLogged(logged)}/>
-  // console.log(component, isLogged)
-
   return (
     <div>
       {isLogged ?  <ChatBoard /> :  <Login setUsername={username => setUsername(username)} setLogged={logged => setLogged(logged)}/>}
