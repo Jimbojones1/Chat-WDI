@@ -1,7 +1,0 @@
-.wrapper {
-  display: grid;
-  grid-template-columns: 28% 30% 60%;
-  grid-gap: 10px;
-  font-size: 1em;
-  color:rgb(36,222,174);
-}
