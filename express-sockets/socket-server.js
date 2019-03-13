@@ -24,30 +24,29 @@ const rooms = [{
 module.exports = function(server){
   const socketServer = io(server);
 
-  socketServer.on('connection', socket => {
+  socketServer.on('connection', (socket) => {
     console.log('socket is connected')
-    socket.on('something', (data) => {
-      console.log(data);
 
-    })
     socketServer.emit('receive message', 'connected');
 
     socket.on('addUser', (username) => {
-      console.log('hitting', username)
-      //store thier name as the key and the socket.id as the value
+
       usernames[username] = socket.id;
       socket.username = username;
 
       // Joining a Room named main Room
-      socket.join('Main Room');
-      socket.room = 'Main Room';
+      socket.join('MainRoom');
+      socket.room = 'MainRoom';
 
       rooms[0].users.push(username);
 
-      socketServer.emit('rooms', rooms)
+      setTimeout(() => {
+        socketServer.emit('rooms', rooms)
       // Emit a message called users, that sends along with
       // it all the usernames in the object, HINT: ALL THE KEYS
-      socketServer.to('Main Room').emit('users', rooms[0].users, 'Main Room');
+        socketServer.to('MainRoom').emit('users', rooms[0].users, 'MainRoom');
+      }, 100)
+
       // socketServer.emit('messages', messages);
     });// end of addUser
 
