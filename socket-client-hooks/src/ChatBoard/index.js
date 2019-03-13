@@ -3,7 +3,7 @@ import {socket} from '../App';
 import './style.css';
 // import Rooms from '../Rooms';
 import Users from '../Users';
-// import ChatRoom from '../ChatRoom';
+import ChatRoom from '../ChatRoom';
 
 // Smart Component
 export default function ChatBoard(){
@@ -48,6 +48,7 @@ export default function ChatBoard(){
   return (
       <div className="wrapper">
        <Users usernames={usernames}/>
+       <ChatRoom messages={messages} chatroom={chatRoomName}/>
       </div>
       )
 
