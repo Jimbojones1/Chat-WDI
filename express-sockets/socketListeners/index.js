@@ -32,5 +32,12 @@ module.exports = {
       // Emit a message called users, that sends along with
       // it all the usernames in the object, HINT: ALL THE KEYS
       io.to('MainRoom').emit('users', rooms[0].users, 'MainRoom');
+  },
+  handleChatMessage: function(message, socket, io){
+    const obj = {};
+    obj.username = socket.username;
+    obj.message = message;
+    messages.push(obj);
+    io.emit('messages', messages);
   }
 }

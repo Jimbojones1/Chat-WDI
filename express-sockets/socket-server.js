@@ -1,25 +1,5 @@
 const io = require('socket.io');
-const { addUser } = require('./socketListeners');
-const usernames = {};
-const messages = [];
-
-
-const rooms = [{
-                name: 'MainRoom',
-                messages: [],
-                users: []
-              },
-              {
-                name: 'Crypto',
-                messages: [],
-                users: []
-              },
-              {
-                name: 'Books',
-                messages: [],
-                users: []
-              }];
-
+const { addUser, handleChatMessage } = require('./socketListeners');
 
 module.exports = function(server){
   const socketServer = io(server);
@@ -27,37 +7,11 @@ module.exports = function(server){
   socketServer.on('connection', (socket) => {
     console.log('socket is connected')
 
-    socketServer.emit('receive message', 'connected');
+
     socket.on('addUser', (username) => addUser(username, socket, socketServer))
-    // socket.on('addUser', (username) => {
-
-    //   usernames[username] = socket.id;
-    //   socket.username = username;
-
-    //   // Joining a Room named main Room
-    //   socket.join('MainRoom');
-    //   socket.room = 'MainRoom';
-
-    //   rooms[0].users.push(username);
 
 
-    //     socketServer.emit('rooms', rooms)
-    //   // Emit a message called users, that sends along with
-    //   // it all the usernames in the object, HINT: ALL THE KEYS
-    //     socketServer.to('MainRoom').emit('users', rooms[0].users, 'MainRoom');
-
-
-    //   // socketServer.emit('messages', messages);
-    // });// end of addUser
-
-    socket.on('message', (message) => {
-      const obj = {};
-      obj.username = socket.username;
-      obj.message = message;
-      messages.push(obj);
-      socketServer.emit('messages', messages);
-
-    });
+    socket.on('message', (message) => handleChatMessage(message, socket, socketServer));
 
     socket.on('change room', (room) => {
       // socket
@@ -100,13 +54,13 @@ module.exports = function(server){
 
 
 
-    socket.on('disconnect', () => {
-          // DELETE the user from our object
-          delete usernames[socket.username]
-          // the update the users list by firing an event to the react application
-          // to update the current users
-          socketServer.emit('users', Object.keys(usernames));
-    });
+    // socket.on('disconnect', () => {
+    //       // DELETE the user from our object
+    //       delete usernames[socket.username]
+    //       // the update the users list by firing an event to the react application
+    //       // to update the current users
+    //       socketServer.emit('users', Object.keys(usernames));
+    // });
 
 
 
