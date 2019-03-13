@@ -19,7 +19,7 @@ const rooms = [{
               }];
 
 module.exports = {
-  addUser: function(username, socket, io){
+  addUser: function(io, socket, username){
       usernames[username] = socket.id;
       socket.username = username;
 
@@ -33,7 +33,7 @@ module.exports = {
       // it all the usernames in the object, HINT: ALL THE KEYS
       io.to('MainRoom').emit('users', rooms[0].users, 'MainRoom');
   },
-  handleChatMessage: function(message, socket, io){
+  handleChatMessage: function(io, socket, message){
     const obj = {};
     obj.username = socket.username;
     obj.message = message;
