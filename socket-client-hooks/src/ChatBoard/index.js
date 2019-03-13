@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {socket} from '../App';
-// import './style.css';
+import './style.css';
 // import Rooms from '../Rooms';
-// import Users from '../Users';
+import Users from '../Users';
 // import ChatRoom from '../ChatRoom';
 
 // Smart Component
@@ -47,7 +47,7 @@ export default function ChatBoard(){
 
   return (
       <div className="wrapper">
-       chatboard
+       <Users usernames={usernames}/>
       </div>
       )
 
