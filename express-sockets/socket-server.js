@@ -1,5 +1,5 @@
 const io = require('socket.io');
-
+const { addUser } = require('./socketListeners');
 const usernames = {};
 const messages = [];
 
@@ -28,27 +28,27 @@ module.exports = function(server){
     console.log('socket is connected')
 
     socketServer.emit('receive message', 'connected');
+    socket.on('addUser', (username) => addUser(username, socket, socketServer))
+    // socket.on('addUser', (username) => {
 
-    socket.on('addUser', (username) => {
+    //   usernames[username] = socket.id;
+    //   socket.username = username;
 
-      usernames[username] = socket.id;
-      socket.username = username;
+    //   // Joining a Room named main Room
+    //   socket.join('MainRoom');
+    //   socket.room = 'MainRoom';
 
-      // Joining a Room named main Room
-      socket.join('MainRoom');
-      socket.room = 'MainRoom';
+    //   rooms[0].users.push(username);
 
-      rooms[0].users.push(username);
 
-      setTimeout(() => {
-        socketServer.emit('rooms', rooms)
-      // Emit a message called users, that sends along with
-      // it all the usernames in the object, HINT: ALL THE KEYS
-        socketServer.to('MainRoom').emit('users', rooms[0].users, 'MainRoom');
-      }, 100)
+    //     socketServer.emit('rooms', rooms)
+    //   // Emit a message called users, that sends along with
+    //   // it all the usernames in the object, HINT: ALL THE KEYS
+    //     socketServer.to('MainRoom').emit('users', rooms[0].users, 'MainRoom');
 
-      // socketServer.emit('messages', messages);
-    });// end of addUser
+
+    //   // socketServer.emit('messages', messages);
+    // });// end of addUser
 
     socket.on('message', (message) => {
       const obj = {};
