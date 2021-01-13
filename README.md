@@ -10,9 +10,9 @@ You're going to complete the `ProfilePostDisplay` from the lesson!
 
 #### Requirments
 
-1.  Make sure the Cards only show up in 3 items per row on a large screen. (Hint check out on semantic ui the Card.Group props on the docs)
-2.  Reuse the PostCard componet from earlier
-3.  Refactor the PostCard componet to only render the header of the card if the card is being displayed on theh profile! (Hint: maybe you can pass a prop to let the card know if it is on the profile page or not)
+1.  Make sure the Cards only show up in 3 items per row on a large screen. (Hint check out on semantic ui, the Card.Group props on the docs)
+2.  Reuse the PostCard component that is already made to render each post
+3.  Refactor the PostCard component to only render the header of the card if the card is being displayed on the profile! (Hint: maybe you can pass a prop to let the card know if it is on the profile page or not)
 
 
 ### Bonus
