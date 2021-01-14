@@ -1,11 +1,11 @@
 
 ## Lab 
 
-You're going to complete the `ProfilePostDisplay` from the lesson!
+You're going to create the header
 
-- Take a look at the wireframe again
+- Take a look at the wireframe 
 
-![Imgur](https://i.imgur.com/dUdOeu3.png)
+![Imgur]([Imgur](https://i.imgur.com/K9VA14c.png))
 
 
 #### Requirments
