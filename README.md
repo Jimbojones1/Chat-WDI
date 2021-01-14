@@ -5,20 +5,23 @@ You're going to create the header
 
 - Take a look at the wireframe 
 
-![Imgur]([Imgur](https://i.imgur.com/K9VA14c.png))
+![Imgur](https://i.imgur.com/K9VA14c.png)
 
 
-#### Requirments
+#### User Story
 
-1.  Make sure the Cards only show up in 3 items per row on a large screen. (Hint check out on semantic ui, the Card.Group props on the docs)
-2.  Reuse the PostCard component that is already made to render each post
-3.  Refactor the PostCard component to only render the header of the card if the card is being displayed on the profile! (Hint: maybe you can pass a prop to let the card know if it is on the profile page or not)
+1. If the user clicks on Logout the user will be logged out of the app and redirected to the log in page. 
+
+The jwt token should be removed from localStorage, remember you can check by using the devtools and going to application > localstorage. Hint do you have have a function already in your `userService` that you can use?
+
+2.  If the user clicks on the home icon they should be directed to the feed Page.
+
+3. The logged in users profile picture should display to the left, and if clicked on should direct the user to thier profile page!
 
 
 ### Bonus
 
-1. Do you notice how the our PostFeed and ProfilePostDisplay are similiar? See if you can refactor that into one component where the feed on the homepage shows
-the cards in a single row like we have it now, and then on the profilePage they are rendered in rows of three!
-2.  Instead of using the words `Loading...` like we are in the profile page, use a loading icon from semantic ui, also implement loading when you are creating a post!
+1. If the user clicks on the profile picture in the header of a card component they should be redirected to that particular users profile page!
+
 
 
